@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewProgram">
+
+    <ImageButton
+        android:id="@+id/draw"
+        android:layout_width="80dp"
+        android:layout_height="79dp"
+        android:backgroundTint="#F9F8F8"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toBottomOf="@+id/newButton"
+        app:layout_constraintEnd_toStartOf="@+id/erase"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/newButton"
+        app:layout_constraintTop_toTopOf="@+id/newButton"
+        app:srcCompat="@drawable/paint_brush" />
+
+    <ImageButton
+        android:id="@+id/newButton"
+        android:layout_width="78dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#F2EEEE"
+        android:scaleType="fitStart"
+        app:layout_constraintEnd_toStartOf="@+id/draw"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/newpic" />
+
+    <ImageButton
+        android:id="@+id/erase"
+        android:layout_width="79dp"
+        android:layout_height="76dp"
+        android:backgroundTint="#FBF7F7"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toBottomOf="@+id/draw"
+        app:layout_constraintEnd_toStartOf="@+id/save"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/draw"
+        app:layout_constraintTop_toTopOf="@+id/draw"
+        app:srcCompat="@drawable/rubber" />
+
+    <ImageButton
+        android:id="@+id/save"
+        android:layout_width="71dp"
+        android:layout_height="77dp"
+        android:backgroundTint="#F4F0F0"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toBottomOf="@+id/erase"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/erase"
+        app:layout_constraintTop_toTopOf="@+id/erase"
+        app:srcCompat="@drawable/save" />
+
+
+    <com.adarsh.paintapp.DrawingView
+        android:id="@id/drawing"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:background="#FFF"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/draw" />
+
+    <LinearLayout
+        android:id="@+id/paintColors"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:background="#FF660000"
+            android:onClick="paintClicked"
+            android:src="@drawable/paint2"
+            android:tag="#FF660000" />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:background="#FFFF0000"
+            android:onClick="paintClicked"
+            android:src="@drawable/paint2"
+            android:tag="#FFFF0000" />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:background="#FFFF6600"
+            android:onClick="paintClicked"
+            android:src="@drawable/paint2"
+            android:tag="#FFFF6600" />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:background="#FFFFCC00"
+            android:onClick="paintClicked"
+            android:src="@drawable/paint2"
+            android:tag="#FFFFCC00" />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:background="#FF009900"
+            android:onClick="paintClicked"
+            android:src="@drawable/paint2"
+            android:tag="#FF009900" />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:background="#FF000099"
+            android:onClick="paintClicked"
+            android:src="@drawable/paint2"
+            android:tag="#FF000099" />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:background="#FF009999"
+            android:onClick="paintClicked"
+            android:src="@drawable/paint2"
+            android:tag="#FF009999" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/paintColors"
+        tools:layout_editor_absoluteX="305dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
