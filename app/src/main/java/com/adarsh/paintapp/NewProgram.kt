@@ -17,6 +17,7 @@ import java.util.*
 class NewProgram : AppCompatActivity() {
     lateinit var drawingView: DrawingView
     lateinit var currentPaint: ImageButton
+    lateinit var drawingView2: DrawingViewOther
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,14 +73,16 @@ class NewProgram : AppCompatActivity() {
         }
 
         button.setOnClickListener {
-            //drawingView.DisplayMutable()
-           Log.d("Store size: ", drawingView.store.details.size.toString())
+            drawingView2 = findViewById<DrawingViewOther>(R.id.drawingView2)
+             drawingView2.setUpDrawing()
+            // drawingView.DisplayMutable()
+           /*Log.d("Store size: ", drawingView.store.details.size.toString())
             for(i in 0..drawingView.store.details.size-1){
                 Log.d("Store.details[i].size:", drawingView.store.details[i].size.toString())
                 for(j in 0..drawingView.store.details[i].size-1){
                     Log.d("Values: ", drawingView.store.details[i][0].toString())
                 }
-            }
+            }*/
         }
 
     }

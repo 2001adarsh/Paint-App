@@ -7,11 +7,17 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class DrawingView(ctx: Context, attr: AttributeSet): View(ctx, attr) {
 
-    public var store = Data()
-    val figure = mutableListOf<MutableList<MutableList<Float>>>()
+    companion object{
+        public var store = Data()
+        val figure = mutableListOf<MutableList<MutableList<Float>>>()
+    }
     lateinit var drawPath : Path
     var erasing = false
     lateinit var drawPaint:Paint
@@ -56,11 +62,13 @@ class DrawingView(ctx: Context, attr: AttributeSet): View(ctx, attr) {
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
+        Log.i("Situation", "onSizeChanged")
         canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
         drawCanvas = Canvas(canvasBitmap)
     }
 
     override fun onDraw(canvas: Canvas?) {
+        Log.i("Situation", "OnDraw")
         canvas?.drawBitmap(canvasBitmap, 0F, 0F, canvasPaint)
         canvas?.drawPath(drawPath, drawPaint)
     }
@@ -68,12 +76,16 @@ class DrawingView(ctx: Context, attr: AttributeSet): View(ctx, attr) {
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         val touchX = event!!.x
         val touchY = event.y
-
-
-
+        Log.i("Situation", "onTouchEvent")
         when(event?.action){
             MotionEvent.ACTION_DOWN -> {
+                val lineF = mutableListOf<MutableList<Float>>()
+                val pointF = mutableListOf<Float>()
                 drawPath.moveTo(touchX, touchY)
+                pointF.add(touchX)
+                pointF.add(touchY)
+                lineF.add(pointF)
+                figure.add(lineF)
             }
             MotionEvent.ACTION_MOVE -> {
                 val lineF = mutableListOf<MutableList<Float>>()
@@ -119,13 +131,18 @@ class DrawingView(ctx: Context, attr: AttributeSet): View(ctx, attr) {
 
     }
 
-    public fun DisplayMutable(){
-        Log.d("Figeure-> size: ", store.details.size.toString())
-        for(i in 0 until store.details.size){
-            Log.d("store.details[i] -> ", store.details[i].size.toString())
-            for(j in 0 until store.details[i].size) {
-                Log.d("Figure 1 points", store.details[i][j][0].toString())
+   /* public fun DisplayMutable(){
+       startNew()
+        setUpDrawing()
+        for(i in 0..store.details[0].size-1){
+            drawPath.moveTo(store.details[0][i][0][0], store.details[0][i][0][1])
+            for(j in 0..store.details[0][i].size-1){
+                drawPath.lineTo(store.details[0][i][j][0], store.details[0][i][j][1])
             }
+            drawCanvas.drawPath(drawPath, drawPaint)
+            drawCanvas?.drawBitmap(canvasBitmap, 0F, 0F, canvasPaint)
+            drawPath.reset()
+            drawCanvas?.drawPath(drawPath, drawPaint)
         }
-    }
+    }*/
 }
